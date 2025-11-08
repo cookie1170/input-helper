@@ -150,7 +150,7 @@ public static class @{actions.className}
                     sb.AppendLine(
                         $@"
     /// <summary>
-    ///     The '{action.name}' action from the '{map.name}' input map
+    ///     The '{action.name}' <see cref=""UnityEngine.InputSystem.InputAction"">action</see> from the '{map.name}' <see cref=""UnityEngine.InputSystem.InputActionMap"">input map</see>
     /// </summary>
     public static InputAction @{variableName} => {formattedMapName}.{formattedActionName};"
                     );
