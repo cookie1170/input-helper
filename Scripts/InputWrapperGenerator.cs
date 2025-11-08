@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace Cookie.InputWrapper
 {
-    public static class InputWrapperGenerator
+    internal static class InputWrapperGenerator
     {
         [MenuItem("Tools/Input Wrapper/Generate")]
         private static void Generate() {
