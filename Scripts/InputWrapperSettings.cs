@@ -26,6 +26,12 @@ namespace Cookie.InputWrapper
         )]
         internal string folder = "Settings/InputSystem/Wrappers";
 
+        [SerializeField]
+        [Tooltip(
+            "Whether to always include the action map in the action property names. If false, it's only included when multiple maps share the same action name"
+        )]
+        internal bool alwaysIncludeMap = false;
+
         [SerializeField] [Tooltip("The assets to generate the wrapper classes for")]
         internal ActionsAsset[] assets;
 

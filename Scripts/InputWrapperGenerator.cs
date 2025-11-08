@@ -9,8 +9,12 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace Cookie.InputWrapper
 {
-    internal static class InputWrapperGenerator
+    internal class InputWrapperGenerator
     {
+        private readonly InputWrapperSettings _settings;
+
+        public InputWrapperGenerator(InputWrapperSettings settings) => _settings = settings;
+
         [MenuItem("Tools/Input Wrapper/Generate")]
         private static void Generate() {
             InputWrapperSettings settings = InputWrapperSettings.GetInst();
@@ -19,7 +23,8 @@ namespace Cookie.InputWrapper
             if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
             foreach (InputWrapperSettings.ActionsAsset actions in settings.assets) {
-                string result = GetCodeFor(actions, settings.@namespace);
+                InputWrapperGenerator generator = new(settings);
+                string result = generator.GetCodeFor(actions);
                 string path = $"{folder}/{actions.className}__Generated.cs";
                 File.WriteAllText(path, result);
             }
@@ -28,7 +33,8 @@ namespace Cookie.InputWrapper
             AssetDatabase.Refresh();
         }
 
-        private static string GetCodeFor(InputWrapperSettings.ActionsAsset actions, string @namespace) {
+        private string GetCodeFor(InputWrapperSettings.ActionsAsset actions) {
+            string @namespace = _settings.@namespace;
             InputActionAsset asset = actions.asset;
 
             StringBuilder sb = new(
@@ -133,7 +139,7 @@ public static class @{actions.className}
             return sb.ToString();
         }
 
-        private static string GetActionMapDefinitions(InputActionAsset asset, string generatedClass) {
+        private string GetActionMapDefinitions(InputActionAsset asset, string generatedClass) {
             StringBuilder sb = new();
 
             foreach (InputActionMap map in asset.actionMaps) {
@@ -164,11 +170,13 @@ public static class @{actions.className}
             return sb.ToString();
         }
 
-        private static string GetDistinctName(
+        private string GetDistinctName(
             InputAction action,
             InputActionMap map,
             ReadOnlyArray<InputActionMap> assetActionMaps
         ) {
+            if (_settings.alwaysIncludeMap) return $"{map.name}_{action.name}";
+
             IEnumerable<InputAction> otherActions = assetActionMaps.SelectMany(m => m.actions.Where(a => a != action));
             bool hasSame = otherActions.Select(a => a.name).Contains(action.name);
 
