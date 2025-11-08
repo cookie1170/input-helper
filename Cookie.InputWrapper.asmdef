@@ -1,20 +1,19 @@
 {
-    "name": "Cookie.InputWrapper",
-    "rootNamespace": "Cookie.InputWrapper",
-    "references": [
-        "Unity.InputSystem",
-        "CookieUtils.Base",
-        "AnnulusGames.UnityCodeGen.Editor"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "Cookie.InputWrapper",
+  "rootNamespace": "Cookie.InputWrapper",
+  "references": [
+    "Unity.InputSystem",
+    "CookieUtils.Base"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }
