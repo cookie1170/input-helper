@@ -2,7 +2,7 @@
   "name": "com.cookie.input-wrapper",
   "version": "0.3.0",
   "displayName": "Input Wrapper",
-  "description": "A wrapper using Roslyn source generation for input actions",
+  "description": "Generates static wrappers for strong-referencing input actions from Unity's Input system.",
   "unity": "6000.2",
   "dependencies": {
     "com.unity.inputsystem": "^1.14.2"
