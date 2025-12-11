@@ -1,8 +1,8 @@
 {
-  "name": "com.cookie.input-wrapper",
+  "name": "com.cookie.input-helper",
   "version": "0.3.0",
-  "displayName": "Input Wrapper",
-  "description": "Generates static wrappers for strong-referencing input actions from Unity's Input system.",
+  "displayName": "Input Helper",
+  "description": "Some helpers for the new input system",
   "unity": "6000.2",
   "dependencies": {
     "com.unity.inputsystem": "^1.14.2"
