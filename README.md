@@ -1,8 +1,8 @@
-# input-wrapper
+# input-helper
 
-Generates static wrappers for strong-referencing input actions from Unity's Input system.
+Generates static wrappers for strong-referencing input actions from Unity's Input system, as well as provides a system for easily remapping inputs
 
-# Usage
+# Input wrapper:
 
 1. Open the project settings (Edit -> Project settings)
 2. Set it up under the 'Input Wrapper' section
