@@ -1,21 +1,21 @@
 {
-  "name": "com.cookie.input-helper",
-  "version": "0.3.0",
-  "displayName": "Input Helper",
-  "description": "Some helpers for the new input system",
-  "unity": "6000.2",
-  "dependencies": {
-    "com.unity.inputsystem": "^1.14.2"
-  },
-  "author": {
-    "name": "Cookie",
-    "url": "https://github.com/cookie1170/"
-  },
-  "samples": [
-    {
-      "displayName": "Input Remapping",
-      "description": "A sample showing the input remapping functionality",
-      "path": "Samples~/Input Remapping"
-    }
-  ]
+	"name": "com.cookie.input-helper",
+	"version": "0.3.0",
+	"displayName": "Input Helper",
+	"description": "Some helpers for the new input system",
+	"unity": "6000.2",
+	"dependencies": {
+		"com.unity.inputsystem": "^1.14.2"
+	},
+	"author": {
+		"name": "Cookie",
+		"url": "https://github.com/cookie1170/"
+	},
+	"samples": [
+		{
+			"displayName": "Input Remapping",
+			"description": "A sample showing the input remapping functionality",
+			"path": "Samples/Input Remapping"
+		}
+	]
 }
