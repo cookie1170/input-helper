@@ -15,7 +15,7 @@
 		{
 			"displayName": "Input Remapping",
 			"description": "A sample showing the input remapping functionality",
-			"path": "Samples/Input Remapping"
+			"path": "Samples~/Input Remapping"
 		}
 	]
 }
