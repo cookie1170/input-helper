@@ -100,6 +100,7 @@ public static class @{actions.className}
 
         void OnPlaymodeStateChanged(PlayModeStateChange change) {{
             if (change != PlayModeStateChange.ExitingPlayMode) return;
+            _inst?.Disable();
             _inst?.Dispose();
             _inst = null;
         }}
