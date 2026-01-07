@@ -103,11 +103,11 @@ public static class @{actions.className}
     [InitializeOnLoadMethod]
     private static void EditorInit() 
     {{
-        EditorApplication.playModeStateChanged -= OnPlaymodeStateChanged;
-        EditorApplication.playModeStateChanged += OnPlaymodeStateChanged;
+        EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+        EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
     }}
 
-    private staticvoid OnPlaymodeStateChanged(PlayModeStateChange change) 
+    private static void OnPlayModeStateChanged(PlayModeStateChange change) 
     {{
         if (change != PlayModeStateChange.ExitingPlayMode) 
             return;
