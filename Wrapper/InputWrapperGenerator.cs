@@ -27,7 +27,7 @@ namespace Cookie.InputHelper
             {
                 InputWrapperGenerator generator = new(settings);
                 string result = generator.GetCodeFor(actions);
-                string path = $"{folder}/{actions.className}__Generated.cs";
+                string path = $"{folder}/{actions.className}.g.cs";
                 File.WriteAllText(path, result);
             }
 
@@ -68,19 +68,27 @@ using UnityEditor;
 public static class @{actions.className}
 {{
     #region Singleton
-    private static {generatedClassPath} _inst = new();
+    private static {generatedClassPath} _instance = new();
 
     /// <summary>
     ///     Gets the instance of the generated C# class
     /// </summary>
-    public static {generatedClassPath} Inst {{
-        get {{
-            if (_inst != null) return _inst;
+    public static {generatedClassPath} Inst 
+    {{
+        get 
+        {{
+            if (_instance != null)
+            {{
+                if (!_instance.asset.enabled)
+                    _instance.Enable();
 
-            _inst = new {generatedClassPath}();
-            _inst.Enable();
+                return _instance;
+            }}
 
-            return _inst;
+            _instance = new {generatedClassPath}();
+            _instance.Enable();
+
+            return _instance;
         }}
     }}
     #endregion
@@ -89,28 +97,27 @@ public static class @{actions.className}
     {GetActionMapDefinitions(asset, $"{generatedClassPath}")}
     #endregion
 
-    #region Initialization
+    #region Cleanup
+
     #if UNITY_EDITOR
     [InitializeOnLoadMethod]
-    private static void EditorInit() {{
+    private static void EditorInit() 
+    {{
         EditorApplication.playModeStateChanged -= OnPlaymodeStateChanged;
         EditorApplication.playModeStateChanged += OnPlaymodeStateChanged;
+    }}
 
-        return;
-
-        void OnPlaymodeStateChanged(PlayModeStateChange change) {{
-            if (change != PlayModeStateChange.ExitingPlayMode) return;
-            _inst?.Disable();
-            _inst?.Dispose();
-            _inst = null;
-        }}
+    private staticvoid OnPlaymodeStateChanged(PlayModeStateChange change) 
+    {{
+        if (change != PlayModeStateChange.ExitingPlayMode) 
+            return;
+        
+        _instance?.Disable();
+        _instance?.Dispose();
+        _instance = null;
     }}
     #endif
 
-    [RuntimeInitializeOnLoadMethod]
-    private static void Init() {{
-        _inst?.Enable();
-    }}
     #endregion
 }}"
             );
@@ -152,7 +159,7 @@ public static class @{actions.className}
                 sb.AppendLine(
                     $@"
     /// <inheritdoc cref=""{generatedClass}.{formattedMapName}"" />
-    public static {generatedClass}.{formattedMapName}Actions @{formattedMapName} {{ get; }} = Inst.{formattedMapName};"
+    public static {generatedClass}.{formattedMapName}Actions @{formattedMapName} => Instance.{formattedMapName};"
                 );
 
                 foreach (InputAction action in map.actions)
