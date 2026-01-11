@@ -63,7 +63,7 @@ using UnityEditor;
             sb.Append(
                 $@"
 /// <summary>
-///     A static wrapper around the '{asset.name}' input actions asset
+/// A static wrapper around the '{asset.name}' input actions asset
 /// </summary>
 public static class @{actions.className}
 {{
@@ -71,9 +71,9 @@ public static class @{actions.className}
     private static {generatedClassPath} _instance = new();
 
     /// <summary>
-    ///     Gets the instance of the generated C# class
+    /// Gets the instance of the generated C# class
     /// </summary>
-    public static {generatedClassPath} Inst 
+    public static {generatedClassPath} Instance
     {{
         get 
         {{
@@ -170,7 +170,7 @@ public static class @{actions.className}
                     sb.AppendLine(
                         $@"
     /// <summary>
-    ///     The '{action.name}' <see cref=""UnityEngine.InputSystem.InputAction"">action</see> from the '{map.name}' <see cref=""UnityEngine.InputSystem.InputActionMap"">input map</see>
+    /// The '{action.name}' input action from the '{map.name}' input action map
     /// </summary>
     public static InputAction @{variableName} => {formattedMapName}.{formattedActionName};"
                     );
